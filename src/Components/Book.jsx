@@ -1,9 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Book = ({book}) => {
-    const{image,bookName,author,tags,category} =book;
+    const{bookId, image,bookName,author,tags,category} =book;
     return (
-        <div className="card bg-base-100 w-96 shadow-xl ">
+       <Link to={`/book/${bookId}`}>
+        <div  className="card bg-base-100 w-96 shadow-xl ">
   <figure className='bg-blue-400 p-8'>
     <img
     className='h-[134px] py-3 rounded-2xl'
@@ -13,7 +15,7 @@ const Book = ({book}) => {
   <div className="card-body ">
     <div>
         {
-            tags.map(tag=><button className="btn btn-xs text-green-400 mr-2">{tag}</button>
+            tags.map((tag,idx)=><button key={idx} className="btn btn-xs  text-green-400 mr-2">{tag}</button>
 
             )
         }
@@ -39,6 +41,7 @@ const Book = ({book}) => {
     </div>
   </div>
 </div>
+       </Link>
     );
 };
 
